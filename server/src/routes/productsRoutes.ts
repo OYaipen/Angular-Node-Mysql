@@ -7,8 +7,11 @@ class ProductsRoutes {
         this.config();
     }
     config(): void {
-        this.router.get('/', productsController.index);
-    }
+        this.router.get('/', productsController.list);
+        this.router.get('/:id', productsController.getOne);
+        this.router.post('/', productsController.create);
+        this.router.put('/:id', productsController.update);
+        this.router.delete('/:id', productsController.delete);    }
 }
 const productsRoutes = new ProductsRoutes();
 export default productsRoutes.router;
