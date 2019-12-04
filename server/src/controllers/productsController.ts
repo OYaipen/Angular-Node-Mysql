@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import pool from "../database";
 class ProductsController {
-    public async list(req: Request, res: Response) {
+    public async list(req: Request, res: Response): Promise<void> {
         const products = await pool.query('SELECT*FROM products');
         console.log(products);
         res.json(products);
@@ -22,7 +22,7 @@ class ProductsController {
     }
     public async update(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
-        await pool.query('UPDATE products set ? WHERE id = ?', [req.body,id]);
+        await pool.query('UPDATE products set ? WHERE id = ?', [req.body, id]);
         res.json({ message: "Product Update" })
     }
     public async delete(req: Request, res: Response): Promise<void> {

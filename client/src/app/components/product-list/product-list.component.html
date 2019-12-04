@@ -1,0 +1,13 @@
+<div class="col-md-4" *ngFor="let product of products">
+    <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-center">
+            <h6> {{product.title}}</h6>
+            <button class="btn btn-danger" (click)="deleteProduct(product.id)"><i class="far fa-trash-alt"></i></button>
+        </div>
+        <img [src]="product.image" class="card-img-top">
+        <div class="card-body">
+            <p>{{product.description}}</p>
+            <a [routerLink]="['/products/edit',product.id]" class="btn btn-info btn-block">Edit Product</a>
+        </div>
+    </div>
+</div>
